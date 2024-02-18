@@ -1,0 +1,42 @@
+{{define "form-add-user"}}
+    <form method="post" accept="/users/add">
+        {{template "field-name" .}}
+        {{template "field-email" .}}
+        {{template "field-age" .}}
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+{{end}}
+
+{{define "field-name"}}
+<div class="form-group">
+    <label for="name">Name</label>
+    <input value="{{.Values.Name}}" type="text" class="form-control{{ if .Errors.Name }} is-invalid{{end}}" name="name" id="name" placeholder="Enter name">
+    {{ if .Errors.Name }}
+        <small class="form-text text-danger">
+            {{ .Errors.Name }}
+        </small>
+    {{end}}
+</div>
+{{end}}
+{{define "field-email"}}
+<div class="form-group">
+    <label for="email">Email</label>
+    <input value="{{.Values.Email}}" type="text" class="form-control{{ if .Errors.Email }} is-invalid{{end}}" name="email" id="email" placeholder="Enter email">
+    {{ if .Errors.Email }}
+        <small class="form-text text-danger">
+            {{ .Errors.Email }}
+        </small>
+    {{end}}
+</div>
+{{end}}
+{{define "field-age"}}
+<div class="form-group">
+    <label for="age">Age</label>
+    <input value="{{.Values.Age}}" type="number" class="form-control{{ if .Errors.Age }} is-invalid{{end}}" name="age" id="age" placeholder="Enter age">
+    {{ if .Errors.Age }}
+        <small class="form-text text-danger">
+            {{ .Errors.Age }}
+        </small>
+    {{end}}
+</div>
+{{end}}
