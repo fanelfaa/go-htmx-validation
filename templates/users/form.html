@@ -1,10 +1,16 @@
 {{define "form-add-user"}}
-    <form method="post" action="/users/add">
-        {{template "field-name" .}}
-        {{template "field-email" .}}
-        {{template "field-age" .}}
+    <form hx-post="/users/add" hx-trigger="submit" hx-target="#fields" hx-swap="innerHTML">
+        <div id="fields">
+            {{template "form-fields" .}}
+        </div>
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>
+{{end}}
+
+{{define "form-fields"}}
+    {{template "field-name" .}}
+    {{template "field-email" .}}
+    {{template "field-age" .}}
 {{end}}
 
 {{define "field-name"}}
